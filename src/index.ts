@@ -5,22 +5,32 @@ import db from "./connection";
 
 const app = express();
 
+// Cors options
+const corsOptions = {
+  origin: "https://www.harivansht.tech/",
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+
 // Home route
 app.get("/", (req, res) => {
   res.send("Hello!");
 });
+
 // Contact route
 app.use("/contact", contactRouter);
 
 // Start the server
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   db();
 
-  console.log(`Listening on port ${process.env.PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });
