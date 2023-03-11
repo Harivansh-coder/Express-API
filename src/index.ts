@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
 import contactRouter from "./routers/contact";
-import db from "./connection";
 import rateLimitMiddleware from "./middleware/ratelimit";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+dotenv.config();
 
 const app = express();
 
@@ -30,8 +32,9 @@ app.use("/api/contact", contactRouter);
 // Start the server
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  db();
-
-  console.log(`Listening on port ${PORT}`);
+mongoose.connect(process.env.MONGO_URL || "", {}).then(() => {
+  console.log("MongoDB Connected");
+  app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
 });
