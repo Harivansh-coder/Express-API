@@ -8,7 +8,7 @@ const app = express();
 
 // Cors options
 const corsOptions = {
-  origin: "https://www.harivansht.tech/",
+  origin: "https://www.harivansht.tech",
   optionsSuccessStatus: 200,
 };
 

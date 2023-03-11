@@ -12,7 +12,7 @@ const db = async () => {
     // Connect to the MongoDB cluster
     const con = await mongoose.connect(uri);
 
-    console.log("MongoDB Connected");
+    console.log("MongoDB Connected", con.connection.host);
   } catch (err) {
     console.error(err);
     console.log("MongoDB connection failed");
