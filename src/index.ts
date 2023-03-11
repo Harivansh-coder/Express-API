@@ -20,12 +20,12 @@ app.use(rateLimitMiddleware);
 // Routes
 
 // Home route
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Hello!");
 });
 
 // Contact route
-app.use("/contact", contactRouter);
+app.use("/api/contact", contactRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
