@@ -14,11 +14,6 @@ const contactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // No Need for this
-    // date: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
   },
   // Adds createdAt and updatedAt fields
   {
